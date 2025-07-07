@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Spa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.2rem;
+      color: #6a1b9a;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #fce4ec, #e1f5fe);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #4a148c;
+    }
+
+    .card span.price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #00695c;
+    }
+
+    .card .description {
+      margin-top: 10px;
+      display: none;
+      color: #444;
+    }
+
+    .card input[type="checkbox"] {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transform: scale(1.4);
+    }
+
+    #booking-form {
+      display: none;
+      background: #ffffffcc;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    #booking-form input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ab47bc, #00acc1);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #8e24aa, #00838f);
+    }
+
+    .agendar {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .icon {
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ Luxury Spa ✨</h1>
+  <div class="container" id="spa-container">
+    <!-- Tratamiento 1 -->
+    <div class="card" onclick="toggleDescription(this)">
+      <h2><span class="icon">🌿</span> Masaje Relajante <span class="price">$35</span></h2>
+      <input type="checkbox" class="service-check">
+      <p class="description">Masaje de cuerpo completo con aceites esenciales para aliviar el estrés.</p>
+    </div>
+
+    <!-- Tratamiento 2 -->
+    <div class="card" onclick="toggleDescription(this)">
+      <h2><span class="icon">🌸</span> Facial de Jazmín <span class="price">$40</span></h2>
+      <input type="checkbox" class="service-check">
+      <p class="description">Limpieza profunda, exfoliación y mascarilla natural de jazmín.</p>
+    </div>
+
+    <!-- Tratamiento 3 -->
+    <div class="card" onclick="toggleDescription(this)">
+      <h2><span class="icon">🧖‍♀️</span> Baño de Vapor <span class="price">$25</span></h2>
+      <input type="checkbox" class="service-check">
+      <p class="description">Desintoxicación y relajación con hierbas aromáticas naturales.</p>
+    </div>
+
+    <!-- Tratamiento 4 -->
+    <div class="card" onclick="toggleDescription(this)">
+      <h2><span class="icon">🕯️</span> Aromaterapia <span class="price">$30</span></h2>
+      <input type="checkbox" class="service-check">
+      <p class="description">Sesión guiada con aromas personalizados para armonizar mente y cuerpo.</p>
+    </div>
+
+    <!-- Tratamiento 5 -->
+    <div class="card" onclick="toggleDescription(this)">
+      <h2><span class="icon">💆‍♀️</span> Reflexología <span class="price">$45</span></h2>
+      <input type="checkbox" class="service-check">
+      <p class="description">Terapia de presión en puntos clave de pies y manos para revitalizar.</p>
+    </div>
+
+    <!-- Botón agendar -->
+    <div class="agendar">
+      <button onclick="mostrarFormulario()">Agendar Cita</button>
+    </div>
+
+    <!-- Formulario -->
+    <div id="booking-form">
+      <h3>🗓️ Selecciona fecha y hora</h3>
+      <input type="date" id="fecha">
+      <input type="time" id="hora">
+      <button onclick="enviarPedido()">Realizar Pedido</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleDescription(card) {
+      const desc = card.querySelector('.description');
+      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function mostrarFormulario() {
+      document.getElementById('booking-form').style.display = 'block';
+      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function enviarPedido() {
+      const servicios = [];
+      document.querySelectorAll('.card').forEach(card => {
+        if (card.querySelector('.service-check').checked) {
+          const nombre = card.querySelector('h2').innerText;
+          servicios.push(nombre);
+        }
+      });
+
+      const fecha = document.getElementById('fecha').value;
+      const hora = document.getElementById('hora').value;
+
+      if (servicios.length === 0 || !fecha || !hora) {
+        alert("Por favor, selecciona al menos un tratamiento, fecha y hora.");
+        return;
+      }
+
+      const mensaje = encodeURIComponent(`Hola, quiero agendar una cita para:\n\n${servicios.join("\n")}\n\n📅 Fecha: ${fecha}\n🕒 Hora: ${hora}`);
+      const numeroWhatsApp = "593999999999"; // Cambia por tu número real con código de país
+      window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, "_blank");
+    }
+  </script>
+</body>
+</html>
