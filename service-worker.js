@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "gastronomia-paty-paty-cache-v1";
+const CACHE_NAME = "luxury-nails-studio-cache-v1";
 const FILES_TO_CACHE = [
   "./",
   "index.html",
