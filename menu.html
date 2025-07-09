@@ -6,10 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luxury Spa</title>
   <style>
+    /* Fondo adaptable */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Color de fondo (activar/desactivar agregando/removiendo esta clase) */
+    .fondo-color {
+      background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
+    }
+
+    /* Imagen de fondo (activar/desactivar agregando/removiendo esta clase) */
+    .fondo-imagen {
+      background: url('luxfondo.webp') no-repeat center center fixed;
+      background-size: cover;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
       color: #333;
       overflow-x: hidden;
     }
@@ -28,7 +48,7 @@
     }
 
     .card {
-      background: linear-gradient(135deg, #fce4ec, #e1f5fe);
+      background: linear-gradient(135deg, #f281a6, #ffffff);
       border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       margin-bottom: 20px;
@@ -72,11 +92,12 @@
 
     #booking-form {
       display: none;
-      background: #ffffffcc;
+      background: #000000cc;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
       padding: 20px;
       margin-top: 30px;
+      color: white;
     }
 
     #booking-form input {
@@ -91,7 +112,7 @@
 
     button {
       background: linear-gradient(135deg, #ab47bc, #00acc1);
-      color: white;
+      color: rgb(6, 4, 4);
       border: none;
       padding: 12px 20px;
       border-radius: 10px;
@@ -115,41 +136,59 @@
   </style>
 </head>
 <body>
+  <!-- Fondo que puedes controlar agregando/quitar clases fondo-color y fondo-imagen -->
+  <div class="background fondo-color fondo-imagen"></div>
+
   <h1>✨ Luxury Spa ✨</h1>
   <div class="container" id="spa-container">
     <!-- Tratamiento 1 -->
     <div class="card" onclick="toggleDescription(this)">
-      <h2><span class="icon">🌿</span> Masaje Relajante <span class="price">$35</span></h2>
+      <h2><span class="icon">🪻</span> Luxury Spa <span class="price">$35</span></h2>
       <input type="checkbox" class="service-check">
-      <p class="description">Masaje de cuerpo completo con aceites esenciales para aliviar el estrés.</p>
+      <p class="description">Relájese con el aroma calmante y fresco de la lavanda, que es increíblemente curativo para la mente y el cuerpo. Alivia el estrés, la ansiedad y la tensión muscular.
+Masaje de pies de 10 minutos
+Tratamiento de parafina
+Remojo / Exfoliación / Mascarilla / Masaje</p>
     </div>
 
     <!-- Tratamiento 2 -->
     <div class="card" onclick="toggleDescription(this)">
-      <h2><span class="icon">🌸</span> Facial de Jazmín <span class="price">$40</span></h2>
+      <h2><span class="icon">🍃</span> Green Tea  Spa <span class="price">$40</span></h2>
       <input type="checkbox" class="service-check">
-      <p class="description">Limpieza profunda, exfoliación y mascarilla natural de jazmín.</p>
+      <p class="description">Refrescante - Enriquecido con extracto de TÉ VERDE para una hidratación profunda. El té verde contiene poderosos ingredientes que combaten los signos del envejecimiento. Estimula el crecimiento celular saludable y mejora la circulación.
+10 minutos de masaje de pies con vapor. Tratamiento para callos. Piedras calientes. Tratamiento de parafina.
+Remojo / Exfoliación / Mascarilla / Masaje</p>
     </div>
 
     <!-- Tratamiento 3 -->
     <div class="card" onclick="toggleDescription(this)">
-      <h2><span class="icon">🧖‍♀️</span> Baño de Vapor <span class="price">$25</span></h2>
+      <h2><span class="icon">🍯</span> Milk Honey  Spa <span class="price">$25</span></h2>
       <input type="checkbox" class="service-check">
-      <p class="description">Desintoxicación y relajación con hierbas aromáticas naturales.</p>
+      <p class="description">Recupera tu luminosidad juvenil con la sedosa mezcla de leche y miel.
+La leche y la miel se han utilizado desde la antigüedad por sus propiedades curativas.
+ Ambos ingredientes actúan en conjunto para hidratar, suavizar y calmar profundamente 
+la piel sensible.
+15 minutos de masaje de pies con vapor. Tratamiento de callos. 
+Piedras calientes. Tratamiento de parafina.Remojo / Exfoliación / Mascarilla / Masaje.</p>
     </div>
 
     <!-- Tratamiento 4 -->
     <div class="card" onclick="toggleDescription(this)">
-      <h2><span class="icon">🕯️</span> Aromaterapia <span class="price">$30</span></h2>
+      <h2><span class="icon">🌼</span> Jasmine  Spa <span class="price">$30</span></h2>
       <input type="checkbox" class="service-check">
-      <p class="description">Sesión guiada con aromas personalizados para armonizar mente y cuerpo.</p>
+      <p class="description">Consiéntase con nuestro Tratamiento de Spa Jazmín, una escapada relajante que hidrata, suaviza y rejuvenece su piel. Los antioxidantes naturales del jazmín promueven una luminosidad radiante, mientras que su delicada fragancia relaja la mente.
+Masaje de pies de 20 minutos con vapor. Tratamiento de callos. Piedras calientes. 
+Tratamiento de parafina.Remojo / Exfoliación / Mascarilla / Masaje.</p>
     </div>
 
     <!-- Tratamiento 5 -->
     <div class="card" onclick="toggleDescription(this)">
-      <h2><span class="icon">💆‍♀️</span> Reflexología <span class="price">$45</span></h2>
+      <h2><span class="icon">🫧</span> Pearl Spa <span class="price">$45</span></h2>
       <input type="checkbox" class="service-check">
-      <p class="description">Terapia de presión en puntos clave de pies y manos para revitalizar.</p>
+      <p class="description">La Pedicura Pearl Spa es una experiencia relajante y sensorial, única y lujosa. Hidrata, suaviza las durezas, tiene un aroma fresco y limpio, ilumina la piel y es rica en antioxidantes. Renueva la textura de la piel, disminuyendo la apariencia de líneas de expresión y arrugas, y alivia el dolor muscular.
+Masaje de vapor de 25 minutos. Masaje de hombros y espalda de 10 minutos. 
+Tratamiento de durezas. Piedras calientes. Tratamiento de parafina.
+Remojo / Exfoliación / Mascarilla / Masaje</p>
     </div>
 
     <!-- Botón agendar -->
@@ -195,7 +234,7 @@
       }
 
       const mensaje = encodeURIComponent(`Hola, quiero agendar una cita para:\n\n${servicios.join("\n")}\n\n📅 Fecha: ${fecha}\n🕒 Hora: ${hora}`);
-      const numeroWhatsApp = "593999999999"; // Cambia por tu número real con código de país
+      const numeroWhatsApp = "593999999999"; // Reemplaza con tu número real
       window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, "_blank");
     }
   </script>
