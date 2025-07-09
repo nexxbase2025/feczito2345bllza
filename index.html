@@ -7,6 +7,7 @@
   <title>LUXURY NAILS STUDIO</title>
   <link rel="manifest" href="manifest.json" />
   <style>
+    /* ... Tus estilos completos sin tocar nada ... */
     body {
       margin: 0;
       font-family: sans-serif;
@@ -230,7 +231,8 @@
     <span class="linea"></span>
   </div>
 
-  <button class="btn" onclick="window.location.href='menu.html'">Ver Menú</button>
+  <!-- Botón traducible -->
+  <button id="menu-btn" class="btn" onclick="window.location.href='menu.html'">Ver Menú</button>
 
   <div class="redes">
     <a href="https://www.tiktok.com/@donbeltranusa" target="_blank" rel="noopener noreferrer"><img src="tik-tok_4782345.png" alt="TikTok" /></a>
@@ -272,26 +274,44 @@
       return ('standalone' in window.navigator) && window.navigator.standalone;
     }
 
-    if (isiOS() && !isInStandaloneMode()) {
-      const aviso = document.createElement("div");
-      aviso.textContent = "Para instalar esta app, pulsa el botón compartir (cuadro con flecha) y selecciona 'Agregar a pantalla de inicio'.";
-      Object.assign(aviso.style, {
-        position: "fixed",
-        bottom: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "rgba(0,0,0,0.85)",
-        color: "white",
-        padding: "1em",
-        borderRadius: "12px",
-        fontSize: "0.9em",
-        maxWidth: "90%",
-        zIndex: "9999"
-      });
-      document.body.appendChild(aviso);
-      setTimeout(() => { aviso.style.display = "none"; }, 15000);
-    }
+    const lang = navigator.language || navigator.userLanguage;
+    const isEnglish = lang.toLowerCase().startsWith("en");
 
+    // Traducción automática
+    window.addEventListener("load", () => {
+      if (isEnglish) {
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) menuBtn.innerText = "View Menu";
+
+        const installBtn = document.getElementById("install-btn");
+        if (installBtn) installBtn.innerText = "📲 Install App";
+      }
+
+      // iOS install banner
+      if (isiOS() && !isInStandaloneMode()) {
+        const aviso = document.createElement("div");
+        aviso.textContent = isEnglish
+          ? "To install this app, tap the share button (square with arrow) and select 'Add to Home Screen'."
+          : "Para instalar esta app, pulsa el botón compartir (cuadro con flecha) y selecciona 'Agregar a pantalla de inicio'.";
+        Object.assign(aviso.style, {
+          position: "fixed",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "rgba(0,0,0,0.85)",
+          color: "white",
+          padding: "1em",
+          borderRadius: "12px",
+          fontSize: "0.9em",
+          maxWidth: "90%",
+          zIndex: "9999"
+        });
+        document.body.appendChild(aviso);
+        setTimeout(() => { aviso.style.display = "none"; }, 15000);
+      }
+    });
+
+    // Carrusel
     const track = document.querySelector('.carousel-track');
     const slides = Array.from(track.children);
     const leftArrow = document.querySelector('.carousel-arrow.left');
