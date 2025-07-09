@@ -237,7 +237,8 @@ Remojo / Exfoliación / Mascarilla / Masaje</p>
     <div id="booking-form">
       <h3>🗓️ Selecciona fecha y hora</h3>
       <input type="text" id="nombre" placeholder="Tu nombre" required>
-      <input type="date" id="fecha">
+      <label id="label-fecha" for="fecha">Selecciona fecha</label>
+<input type="date" id="fecha">
       <select id="hora">
         <option value="">Selecciona hora</option>
         <option>10:00</option><option>10:30</option><option>11:00</option>
@@ -313,6 +314,7 @@ Remojo / Exfoliación / Mascarilla / Masaje</p>
         // Formulario
         document.querySelector('#booking-form h3').innerText = '🗓️ Choose Date and Time';
         document.querySelector('#nombre').placeholder = 'Your name';
+        document.getElementById('fecha').placeholder = 'Select date';
         document.querySelector('#hora').options[0].text = 'Select time';
         document.querySelector('#booking-form button').innerText = 'Submit Request';
 
