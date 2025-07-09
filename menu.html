@@ -302,28 +302,24 @@ Remojo / Exfoliación / Mascarilla / Masaje</p>
     }
 
     // Traducción automática para textos estáticos y descripciones
-    window.addEventListener('load', () => {
-      const lang = navigator.language.startsWith('en') ? 'en' : 'es';
-
-      // Traduce botones y textos estáticos
-      if (lang === 'en') {
-        // Botón "Agendar Cita"
-        document.querySelector('.agendar button').innerText = 'Book Appointment';
-        // Botón "Volver al Inicio"
-        document.querySelector('.volver-inicio button').innerText = '🔙 Back to Home';
-        // Formulario
-        document.querySelector('#booking-form h3').innerText = '🗓️ Choose Date and Time';
-        document.querySelector('#nombre').placeholder = 'Your name';
-        document.getElementById('fecha').placeholder = 'Select date';
-        document.querySelector('#hora').options[0].text = 'Select time';
-        document.querySelector('#booking-form button').innerText = 'Submit Request';
-
-        // Traducción de descripciones usando data-en
-        document.querySelectorAll('.description').forEach(p => {
-          if (p.dataset.en) p.innerText = p.dataset.en;
-        });
-      }
+  window.addEventListener('load', () => {
+  const lang = navigator.language.startsWith('en') ? 'en' : 'es';
+  if (lang === 'en') {
+    document.querySelector('button').innerText = 'Book Appointment';
+    document.querySelectorAll('.description').forEach(p => {
+      if (p.dataset.en) p.innerText = p.dataset.en;
     });
+    document.querySelector('#booking-form h3').innerText = '🗓️ Choose Date and Time';
+    document.querySelector('#nombre').placeholder = 'Your name';
+    document.getElementById('fecha').placeholder = 'Select date'; // 👈 CAMBIO AQUÍ
+    document.querySelector('#hora').options[0].text = 'Select time';
+    document.querySelectorAll('button')[1].innerText = 'Submit Request';
+    document.querySelector('.agendar button').innerText = 'Book Now';
+    document.querySelector('.volver-inicio button').innerText = '🔙 Back to Home';
+  } else {
+    document.getElementById('fecha').placeholder = 'Selecciona fecha'; // 👈 CAMBIO AQUÍ
+  }
+});
   </script>
 </body>
 </html>
