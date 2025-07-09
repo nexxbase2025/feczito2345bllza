@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luxury Spa</title>
   <style>
-    /* Fondo adaptable */
     .background {
       position: fixed;
       top: 0;
@@ -16,12 +15,10 @@
       z-index: -1;
     }
 
-    /* Color de fondo (activar/desactivar agregando/removiendo esta clase) */
     .fondo-color {
       background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
     }
 
-    /* Imagen de fondo (activar/desactivar agregando/removiendo esta clase) */
     .fondo-imagen {
       background: url('luxfondo.webp') no-repeat center center fixed;
       background-size: cover;
@@ -130,13 +127,17 @@
       margin-top: 30px;
     }
 
+    .volver-inicio {
+      text-align: center;
+      margin-top: 20px;
+    }
+
     .icon {
       font-size: 1.4rem;
     }
   </style>
 </head>
 <body>
-  <!-- Fondo que puedes controlar agregando/quitar clases fondo-color y fondo-imagen -->
   <div class="background fondo-color fondo-imagen"></div>
 
   <h1>✨ Luxury Spa ✨</h1>
@@ -196,6 +197,15 @@ Remojo / Exfoliación / Mascarilla / Masaje</p>
       <button onclick="mostrarFormulario()">Agendar Cita</button>
     </div>
 
+    <!-- BOTÓN PARA VOLVER AL INICIO -->
+    <div class="volver-inicio">
+      <a href="index.html" style="text-decoration: none;">
+        <button style="background: #6a1b9a; color: white; padding: 10px 25px; border-radius: 30px; border: none; font-size: 1rem; cursor: pointer;">
+          🔙 Volver al Inicio
+        </button>
+      </a>
+    </div>
+
     <!-- Formulario -->
     <div id="booking-form">
       <h3>🗓️ Selecciona fecha y hora</h3>
@@ -234,7 +244,7 @@ Remojo / Exfoliación / Mascarilla / Masaje</p>
       }
 
       const mensaje = encodeURIComponent(`Hola, quiero agendar una cita para:\n\n${servicios.join("\n")}\n\n📅 Fecha: ${fecha}\n🕒 Hora: ${hora}`);
-      const numeroWhatsApp = "593999999999"; // Reemplaza con tu número real
+      const numeroWhatsApp = "593999999999";
       window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, "_blank");
     }
   </script>
